@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+<div class="article-card">
+    <h1 class="article-title">{{ article.title }}</h1>
+    
+    {% if article.quote %}
+        <div class="article-quote">{{ article.quote }}</div>
+    {% endif %}
+    
+    {% if article.comment %}
+        <div class="article-comment">{{ article.comment }}</div>
+    {% endif %}
+    
+    <div class="article-content full-content">
+        {{ article.content }}
+    </div>
+    
+    <a href="/" class="read-more">返回首页</a>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .full-content {
+        line-height: 1.8;
+        margin: 20px 0;
+    }
+</style>
+{% endblock %}

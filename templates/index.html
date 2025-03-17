@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}个人博客 - 首页{% endblock %}
+
+{% block content %}
+    {% if articles %}
+        {% for article in articles %}
+            <div class="article-card">
+                <h2 class="article-title">{{ article.title }}</h2>
+                {% if article.quote %}
+                    <div class="article-quote">{{ article.quote }}</div>
+                {% endif %}
+                {% if article.comment %}
+                    <div class="article-comment">{{ article.comment }}</div>
+                {% endif %}
+                <div class="article-content">
+                    {{ article.content[:100] }}{% if article.content|length > 100 %}...{% endif %}
+                </div>
+                <a href="/article/{{ article.id }}" target="_blank" class="read-more">阅读全文</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="article-card">
+            <p>暂无文章，请在飞书多维表格中添加内容。</p>
+        </div>
+    {% endif %}
+{% endblock %}
